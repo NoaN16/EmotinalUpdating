@@ -8,7 +8,7 @@ Code 4- Two Session Analysis
 Data analyses for the test-retest study (two sessions experiment) (ratings and model).
 The two-session dataset was taken from the open-access Jangraw et al. (2023) OSF repository. Here we used only participants who completed the closed-loop task in two consecutive sessions.
 
-First, download the files 'SessionOne_ParticipntsRatings' (for the first session), 'SessionTwo_ParticipntsRatings' (for the second session) and 'ModelResults' from the 'twoSessionsData' folder.
+First, download the files 'SessionOne_ParticipantsRatings' (for the first session), 'SessionTwo_ParticipantsRatings' (for the second session) and 'ModelResults' from the 'twoSessionsData' folder.
 
 Then, execute this code.
 """
@@ -27,11 +27,11 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "twoSessionsData")
 
 # Session one
-FirstSession_DIR = os.path.join(DATA_DIR, "SessionOne_ParticipntsRatings.xlsx")
+FirstSession_DIR = os.path.join(DATA_DIR, "SessionOne_ParticipantsRatings.xlsx")
 first_df = pd.read_excel(FirstSession_DIR)
 
 # Session two
-SecondSession_DIR = os.path.join(DATA_DIR, "SessionTwo_ParticipntsRatings.xlsx")
+SecondSession_DIR = os.path.join(DATA_DIR, "SessionTwo_ParticipantsRatings.xlsx")
 second_df = pd.read_excel(SecondSession_DIR)
 
 # Model Results

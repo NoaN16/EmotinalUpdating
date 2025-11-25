@@ -242,20 +242,6 @@ high_corr_ranger, high_p_ranger = rangemood_r_correlation(HighCon_ALLResults) # 
 
 low_corr_ranger, low_p_ranger = rangemood_r_correlation(LowCon_ALLResults) # Low Mood Target
 
-# Correlation between betaP and the change in mood (mean of 3 last ratings - mean of 3 first ratings)
-
-def moodchange_p_correlation(df):
-    
-    # Pearson correlation
-    corr, p_value = stats.pearsonr(df['betaP'], df['Gap_3Ratings'])
-    print(f"\nPearson correlation between betaP and the change in mood (mean of 3 last ratings - mean of 3 first ratings): {corr}, P value: {p_value}")
-    
-    return corr, p_value
-
-high_corr_changep, high_p_changep = moodchange_p_correlation(HighCon_ALLResults) # High Mood Target
-
-low_corr_changep, low_p_changep = moodchange_p_correlation(LowCon_ALLResults) # Low Mood Target
-
 # Correlation between betaR - betaP and the standart deviation of the mood ratings
 
 def stdmood_rp_correlation(df):

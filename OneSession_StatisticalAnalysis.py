@@ -287,6 +287,7 @@ def ttest_meanRPE(df):
 # High Mood Target     
 high_t_meanRPE, high_p_meanRPE, high_t_stdRPE, high_p_stdRPE, high_RPE = ttest_meanRPE(high_df_RPE)
 
+
 # t-test for the ratings mean between the conditions
 def par_mean_byGroup(high_df, low_df, group):
     """
@@ -374,35 +375,6 @@ def mood_change3_correlation(df, floor=False):
     print(f"\nPearson correlation between mood change (3 last ratings mean - 3 first ratings mean) and CESD-10 score:{corr}, P-value: {p_value}")
   
     return corr, p_value, threediff_df
-
-# High Mood Target
-high_corr_fl3, high_p_fl3, high_fl3_df = mood_change3_correlation(high_df_Ratings)
-high_p_text_f13= f"p={high_p_fl3:.4f}" if high_p_fl3 > 0.001 else "p<0.001"
-high_corr_fl3floor, high_p_fl3floor, high_fl3floor_df = mood_change3_correlation(high_df_Ratings, floor=True)
-high_p_text_f13floor= f"p={high_p_fl3floor:.4f}" if high_p_fl3floor > 0.001 else "p<0.001"
-
-# N for labels
-n_all = len(high_fl3_df)
-n_floor = len(high_fl3floor_df)
-
-# Plot the correlations:
-fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(14, 6))
-fig.suptitle('Pearson Correlation between CESD-10 and Mood Change (Last three - First three Ratings)', fontsize=20, fontweight='bold')
-
-# 1- All participants corr
-sns.regplot(x='CESD10_Score', y='three_diff', data=high_fl3_df, ax=axes[0] , color='black')
-axes[0].set_title(f'All Participants (n={n_all}) \nr={high_corr_fl3:.2f}, {high_p_text_f13}')
-axes[0].set_xlabel('CESD-10 Score')
-axes[0].set_ylabel('Mood Change (Last 3 − First 3 Ratings)')
-
-# 2 - Only participants with mean mood ratings > 0.2
-sns.regplot(x='CESD10_Score', y='three_diff', data=high_fl3floor_df, ax=axes[1] , color='black')
-axes[1].set_title(f'Mean Mood > 0.2 (n={n_floor}) \nr={high_corr_fl3floor:.2f}, {high_p_text_f13floor}')
-axes[1].set_xlabel('CESD-10 Score')
-axes[1].set_ylabel('Mood Change (Last 3 − First 3 Ratings)')
-
-plt.tight_layout(rect=[0, 0, 0.9, 0.98])
-plt.show()
 
 # Low Mood Target
 low_corr_fl3, low_p_fl3, low_fl3_df = mood_change3_correlation(low_df_Ratings)

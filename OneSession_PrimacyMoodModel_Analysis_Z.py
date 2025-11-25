@@ -21,6 +21,7 @@ import pandas as pd
 import numpy as np
 import scipy.stats as stats
 from scipy.optimize import minimize, Bounds
+from statsmodels.formula.api import ols
 
 #%% Import Data
 
@@ -255,3 +256,15 @@ def rangemood_r_correlation(df):
 high_corr_ranger, high_p_ranger = rangemood_r_correlation(HighCon_ALLResults) # High Mood Target
 
 low_corr_ranger, low_p_ranger = rangemood_r_correlation(LowCon_ALLResults) # Low Mood Target
+
+#%% Regression Model
+
+# High Mood Target
+high_model_betaR = ols('betaR ~ Ratings_Mean + Ratings_ST + Rating_first', data = HighCon_ALLResults).fit()
+print(high_model_betaR.summary())
+
+# Low Mood Target
+low_model_betaR = ols('betaR ~ Ratings_Mean + Ratings_ST + Rating_first', data = LowCon_ALLResults).fit()
+print(low_model_betaR.summary())
+
+
